@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     <style>
+        #result
+        {
+            border-radius: 5px;
+            padding: 35px 35px 25px 10px;
+            font-size:larger;
+            text-align: right;
+            border: none;
+            pointer-events: none;
+            
+        }
+
+        #m1{
+            margin: 7px;
+        }
+        #bg2{
+            border-radius: 5px;
+            background-color: rgb(167, 212, 249);
+            color: rgb(251, 251, 252);
+            border: none;
+        }
+
+        #bg1{
+            border-radius: 5px;
+            background-color: rgb(231, 243, 253);
+            color: rgb(88, 114, 245);
+            border: none;
+        }
+       
+        #btn1{
+            padding: 10px 25px 10px 25px;
+            background-color: rgb(231, 243, 253);
+            border-radius: 5px;
+            border: none;
+        }
+        
+     </style>
+     <script>
+        let history = '';
+      function dis(val)
+      {
+        document.getElementById("result").value += val;
+        addToHistory(val);
+      }
+
+      function solve()
+      {
+        let x = document.getElementById("result").value;
+        let y = eval(x);
+        document.getElementById("result").value = y;
+        addToHistory('='+y);
+      }
+      function clr()
+      {
+        document.getElementById("result").value='';
+
+        addToHistory('');
+      }
+      function del()
+      {
+        var input = document.getElementById("result");
+        input.value = input.value.substring(0, input.value.length - 1);
+
+       
+      }
+      function addToHistory(value)      {
+        history += value;
+        document.getElementById("history").innerText = history;
+     
+      }
+      function his()
+      {
+        document.getElementById("history").innerText = history;
+        history='';
+
+      }
+     </script>
+    </head>
+    <body bgcolor="#e0e3eb">
+        <table width="100%">
+            <tr>
+                <td width="35%"></td>
+                <td>
+                    <div style="border: none; padding: 5px; border-radius: 8px;background-color: rgb(251, 252, 253); box-shadow: 10px 10px 10px rgb(146, 146, 148);">
+                        <div>
+                            <input id="result"  type="text" placeholder="0" readonly>
+                            
+                        </div>
+                        <div class="row" style="padding: 5px;">
+                            <div class="col-2" id="m1">
+                                <input id="bg1"  type="button" value="CE" onclick="his()" style="padding: 10px 20px 10px 20px;">
+                                <input id="bg1"  type="button" value="C" onclick="clr()" style="padding: 10px 24px 10px 24px;">
+                                <input id="bg1"  type="button" value="DEL" onclick="del()" style="padding: 10px 15px 10px 15px;">
+                                <input id="bg1"  type="button" value="/" onclick="dis('/')" style="padding: 10px 25px 10px 25px;">
+                               
+                            </div>
+                          <div class="col-2" id="m1">
+                            <input id="btn1" type="button" value="9" onclick="dis('9')">
+                            <input id="btn1"  type="button" value="8" onclick="dis('8')">
+                            <input id="btn1"  type="button" value="7" onclick="dis('7')">
+                            <input id="bg1"  type="button" value="*" onclick="dis('*')" style="padding: 10px 24px 10px 24px;">
+                           
+                        </div>
+                        <div class="col-2" id="m1">
+                            <input id="btn1"  type="button" value="6" onclick="dis('6')">
+                            <input id="btn1"  type="button" value="5" onclick="dis('5')">
+                            <input id="btn1"  type="button" value="4" onclick="dis('4')">
+                            <input  id="bg1" type="button" value="-" onclick="dis('-')" style="padding: 10px 25px 10px 24px;">
+                           
+                        </div>
+                        <div class="col-2" id="m1">
+                            <input id="btn1"  type="button" value="3" onclick="dis('3')">
+                            <input id="btn1"  type="button" value="2" onclick="dis('2')">
+                            <input id="btn1"  type="button" value="1" onclick="dis('1')">
+                            <input id="bg1" type="button" value="+" onclick="dis('+')" style="padding: 10px 23px 10px 23px;">
+                            
+                        </div>
+                        <div class="col-2" id="m1">
+                            <input id="bg1" type="button" value="." onclick="dis('.')" style="padding: 10px 27px 10px 27px; border-radius: 5px; border: none;">
+                            <input id="btn1"  type="button" value="0" onclick="dis('0')">
+                            <input id="bg1" type="button" value="%" onclick="dis('%')" style="padding: 10px 22px 10px 23px; border-radius: 5px; border: none;">
+                            <input id="bg2" type="button" value="=" onclick="solve()" style="padding: 10px 23px 10px 23px; border-radius: 5px;border: none;">
+                           
+                        </div>
+                       
+                        </div>
+                    </div>
+                    <p id="history"></p>
+                </td>
+                <td width="43%" ></td>
+            </tr>
+        </table>
+    </body>
+</html>
